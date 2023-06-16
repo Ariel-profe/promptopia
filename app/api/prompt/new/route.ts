@@ -5,13 +5,13 @@ import { connectToDB } from "@/utils/database";
 
 export const POST = async(req: Request) => {
 
-    const {userId, tag, prompt} = await req.json() as IPrompt;
+    const {creator, tag, prompt} = await req.json() as IPrompt;
 
     try {
         await connectToDB();
 
         const newPrompt = new Prompt({
-            creator: userId,
+            creator,
             prompt,
             tag
         });
